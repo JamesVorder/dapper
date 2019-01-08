@@ -4,6 +4,7 @@
     "id": "org.nativescript.dapper"
   },
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +13,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "android": "tns run android --bundle",
-    "ios": "tns run ios --bundle"
+    "ios": "tns run ios --bundle",
+    "electron-build": "electron ."
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "electron": "^4.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
