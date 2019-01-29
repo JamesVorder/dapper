@@ -10,7 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 export class DappsComponent implements OnInit {
 
 	dapps: Array<Object> = new Array<Object>()
-	start: number
+	displayedColumns: string[] = ["Name", "Num", "Description"]
+	start: number = 0
 	pageLength = 10
 	paginator: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
@@ -20,6 +21,7 @@ export class DappsComponent implements OnInit {
 		this.dappsService.getDapps(this.start, this.pageLength)
 		dappsService.dapps$.subscribe(newList => {
 			this.dapps = newList
+			console.log(this.dapps)
 		})
 
 		this.paginator.subscribe(newPage => {
@@ -54,3 +56,5 @@ export class DappsComponent implements OnInit {
 	}
 
 }
+
+
