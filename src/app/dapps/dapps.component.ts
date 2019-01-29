@@ -1,60 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DappsService } from '../services/dapps/dapps.service';
 import { BehaviorSubject } from 'rxjs';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+export interface DappSummary{
+	Name: string;
+	Num: string;
+	Description: string;
+}
 
 @Component({
 	selector: 'app-dapps',
 	templateUrl: './dapps.component.html',
 	styleUrls: ['./dapps.component.css']
 })
+
 export class DappsComponent implements OnInit {
 
-	dapps: Array<Object> = new Array<Object>()
+	@ViewChild(MatPaginator) paginator: MatPaginator;
+	@ViewChild(MatSort) sort: MatSort;
+
+	dataSource: MatTableDataSource<DappSummary> = new MatTableDataSource()
 	displayedColumns: string[] = ["Name", "Num", "Description"]
 	start: number = 0
-	pageLength = 10
-	paginator: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+	numDapps = 100 
+	//TODO: some kind of paging of our HTTP results.
 
 	constructor(
 		public dappsService: DappsService
-	) {  
-		this.dappsService.getDapps(this.start, this.pageLength)
-		dappsService.dapps$.subscribe(newList => {
-			this.dapps = newList
-			console.log(this.dapps)
-		})
+	) { 
+		this.dappsService.getDapps(this.start, this.numDapps)
+		this.dappsService.dapps$.subscribe(newList => {
+			this.dataSource = new MatTableDataSource(newList)
+			this.dataSource.paginator = this.paginator
+			this.dataSource.sort = this.sort
 
-		this.paginator.subscribe(newPage => {
-			this.start = newPage
-			//this.end = this.start + this.pageLength
-			this.dappsService.getDapps(this.start, this.pageLength)
 		})
 	}
-
-	public nextPage(){
-		this.paginator.next(this.start + this.pageLength)
-	}
-
-	public prevPage(){
-		let startIndex = this.start - this.pageLength
-		if(startIndex < 0){
-			this.paginator.next(0)
-		}
-		else{
-			this.paginator.next(startIndex)
-		}
-	}
-
-	/*public set pageLength(l: number){
-		this.pageLength = l
-		this.paginator.next(this.start)
-	}*/
-
 
 	ngOnInit() {
+		this.dataSource.paginator = this.paginator;
+		this.dataSource.sort = this.sort;
+	}
 
+	public applyFilter(filterValue: string) {
+		this.dataSource.filter = filterValue.trim().toLowerCase();
+
+		if (this.dataSource.paginator) {
+			this.dataSource.paginator.firstPage();
+		}
 	}
 
 }
-
 
