@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginatorModule, MatSortModule} from '@angular/material';
 
 @NgModule({
 	declarations: [
@@ -26,6 +26,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 		BrowserAnimationsModule,
 		MatToolbarModule,
 		MatPaginatorModule,
+		MatSortModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent]

@@ -22,9 +22,8 @@ export class DappsComponent implements OnInit {
 	dataSource: MatTableDataSource<DappSummary> = new MatTableDataSource()
 	displayedColumns: string[] = ["Name", "Num", "Description"]
 	start: number = 0
-	numDapps = 100 //TODO: some kind of paging of our HTTP results.
-	//right now, there aren't enough dapps to make that a pressing issue.
-	//paginatorSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+	numDapps = 100 
+	//TODO: some kind of paging of our HTTP results.
 
 	constructor(
 		public dappsService: DappsService
@@ -36,28 +35,7 @@ export class DappsComponent implements OnInit {
 			this.dataSource.sort = this.sort
 
 		})
-
-		/*this.paginatorSubject.subscribe(newPage => {
-			this.start = newPage
-			//this.end = this.start + this.pageLength
-			this.dappsService.getDapps(this.start, this.pageLength)
-		})*/
-
-		}
-
-	/*public nextPage(){
-		this.paginatorSubject.next(this.start + this.pageLength)
 	}
-
-	public prevPage(){
-		let startIndex = this.start - this.pageLength
-		if(startIndex < 0){
-			this.paginatorSubject.next(0)
-		}
-		else{
-			this.paginatorSubject.next(startIndex)
-		}
-	}*/
 
 	ngOnInit() {
 		this.dataSource.paginator = this.paginator;
@@ -65,5 +43,6 @@ export class DappsComponent implements OnInit {
 	}
 
 }
+
 
 
