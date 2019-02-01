@@ -19,10 +19,12 @@ export class DappsService {
 		console.log("Getting " + url + "?" + queryString)
 		this.http.get(`${url}?${queryString}`, {responseType: 'json'}).toPromise().then(
 			(res) => {
-				console.log(res)
+				console.log(JSON.stringify(res))
 				this.dapps.next(res['arr'])
 			}
-		)
+		).catch((err) => {
+			console.log(err)
+		})
 	}
 
 	public get dapps$(): Observable<any[]> {

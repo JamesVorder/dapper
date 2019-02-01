@@ -1,7 +1,10 @@
 {
   "name": "dapper",
   "nativescript": {
-    "id": "org.nativescript.dapper"
+    "id": "org.nativescript.dapper",
+    "tns-android": {
+      "version": "5.1.0"
+    }
   },
   "version": "0.0.0",
   "main": "main.js",

@@ -2,4 +2,6 @@
 <ActionBar [title]="title"></ActionBar>
 <StackLayout  class="p-20">
     <Label text="Welcome to {{ title }}!" class="h1 text-center" textWrap="true"></Label>
+    <Button text="Refresh DApps" tap="refreshDApps" class="btn btn-primary btn-active" />
+    <app-dapps></app-dapps>
 </StackLayout>

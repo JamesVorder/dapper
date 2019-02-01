@@ -20,6 +20,7 @@ export class DappsComponent implements OnInit {
 	@ViewChild(MatSort) sort: MatSort;
 
 	dataSource: MatTableDataSource<DappSummary> = new MatTableDataSource()
+	asArray: DappSummary[] = []
 	displayedColumns: string[] = ["Name", "Num", "Description"]
 	start: number = 0
 	numDapps = 100 
@@ -28,11 +29,12 @@ export class DappsComponent implements OnInit {
 	constructor(
 		public dappsService: DappsService
 	) { 
-		this.dappsService.getDapps(this.start, this.numDapps)
+		this.refreshDApps()
 		this.dappsService.dapps$.subscribe(newList => {
 			this.dataSource = new MatTableDataSource(newList)
 			this.dataSource.paginator = this.paginator
 			this.dataSource.sort = this.sort
+			this.asArray = newList
 
 		})
 	}
@@ -48,6 +50,10 @@ export class DappsComponent implements OnInit {
 		if (this.dataSource.paginator) {
 			this.dataSource.paginator.firstPage();
 		}
+	}
+
+	refreshDApps() {
+		this.dappsService.getDapps(this.start, this.numDapps)
 	}
 
 }

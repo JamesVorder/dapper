@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DappsComponent } from './dapps/dapps.component';
 
-
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 
@@ -14,18 +13,18 @@ import { DappsComponent } from './dapps/dapps.component';
 import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    DappsComponent,
-    NativeScriptHttpClientModule,
-  ],
-  imports: [
-    NativeScriptModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA]
+	declarations: [
+		AppComponent,
+		HomeComponent,
+		DappsComponent,
+	],
+	imports: [
+		NativeScriptModule,
+		AppRoutingModule,
+		NativeScriptHttpClientModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent],
+	schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

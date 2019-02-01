@@ -1,1 +1,9 @@
-<Button text="dapps works!" class="btn btn-primary"></Button>
+<Label text="Hello, world!" class="text-center" textWrap="true"></Label>
+<ListView class="list-group" [items]="asArray" (itemTap)="onItemTap($event)">
+<ng-template let-dapp="item">
+	<FlexBoxLayout flexDirection="row" class="list-group-item">
+	<Label [text]="dapp.Name" class="list-group-item-heading"></Label>
+	</FlexBoxLayout>
+</ng-template>	
+</ListView>
+<Button text="Refresh" tap="refreshDApps()" class="btn btn-primary btn-active"></Button>
