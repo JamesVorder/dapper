@@ -15,7 +15,7 @@
     "android": "tns run android --bundle",
     "ios": "tns run ios --bundle",
     "electron-build": "electron .",
-    "start:desktop": "concurrently --kill-others \"ng serve --configuration prod\" \"electron .\"",
+    "start:desktop": "concurrently --kill-others \"ng serve --configuration production\" \"electron .\"",
     "start:desktop-mock": "concurrently --kill-others \"ng serve\" \"json-server --watch db.json\" \"electron .\""
   },
   "private": true,
