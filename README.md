@@ -29,3 +29,5 @@ This command will give you instructions on how to view the app you're creating o
 This starts the angular app on `localhost:4200`. The electon app needs this to be running, so you'll have to open a second terminal and run:
 
 `electron .`
+
+Alternatively, run ```npm run start:desktop``` to run both the web application and electron in parallel.
