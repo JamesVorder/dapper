@@ -4,9 +4,9 @@ This is a code-sharing project generated along the lines of the example on [Nati
 
 ## Building
 
-`npm install`
+`yarn`
 
-`npm run build`
+`yarn build`
 
 ## Running
 
@@ -14,7 +14,7 @@ This application can run in 3 distinct ways.
 
 ### Website
 
-`npm run start`
+`yarn start`
 
 ### Mobile App
 
@@ -24,10 +24,11 @@ This command will give you instructions on how to view the app you're creating o
 
 ### Desktop App
 
-`npm run start`
+`yarn start`
 
-This starts the angular app on `localhost:4200`. The electon app needs this to be running, so you'll have to open a second terminal and run:
+This starts the angular app on `localhost:4200`. The electron app needs this to be running, so you'll have to open a second terminal and run:
 
 `electron .`
 
-Alternatively, run ```npm run start:desktop``` to run both the web application and electron in parallel.
+Alternatively, run ```yarn start:desktop``` to run both the web application and electron in parallel.
+Run ```yarn start:desktop-mock``` to do the same, except using a mock server.
